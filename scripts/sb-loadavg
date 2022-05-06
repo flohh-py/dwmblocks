@@ -1,0 +1,5 @@
+#!/bin/sh
+icon=" "
+threshold=5
+load=$(cut -d ' ' -f1 /proc/loadavg)
+echo "$icon$load"

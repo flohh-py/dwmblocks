@@ -1,0 +1,22 @@
+#!/bin/sh
+
+[ $(cat /sys/class/net/w*/operstate 2>/dev/null) = up ] && wifiIcon="直"
+
+if [ -d "/sys/class/net/e*/operstate" ]; then
+  # if [ $(cat /sys/class/net/e*/operstate 2>/dev/null) = up ]; then
+  #   ethIcon=""
+  # fi
+  [ $(cat /sys/class/net/e*/operstate 2>/dev/null) = up ] && wifiIcon=""
+fi
+
+if [ ! $ethIcon ]; then
+  ethIcon="!"
+fi
+
+if [ ! $wifiIcon ]; then
+  wifiIcon="睊"
+fi
+
+[ "$(ip tuntap show)" ] && vpnIcon="嬨" || vpnIcon=""
+
+echo "[$ethIcon $wifiIcon $vpnIcon ]"
