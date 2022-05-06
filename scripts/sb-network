@@ -2,12 +2,7 @@
 
 [ $(cat /sys/class/net/w*/operstate 2>/dev/null) = up ] && wifiIcon="直"
 
-if [ -d "/sys/class/net/e*/operstate" ]; then
-  # if [ $(cat /sys/class/net/e*/operstate 2>/dev/null) = up ]; then
-  #   ethIcon=""
-  # fi
-  [ $(cat /sys/class/net/e*/operstate 2>/dev/null) = up ] && wifiIcon=""
-fi
+[ $(cat /sys/class/net/e*/operstate 2>/dev/null) = up ] && ethIcon=""
 
 if [ ! $ethIcon ]; then
   ethIcon="!"
